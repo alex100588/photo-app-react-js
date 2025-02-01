@@ -4,18 +4,17 @@ import { Nav, Navbar } from "react-bootstrap";
 const App = () => {
   return (
     <>
-    <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light">
         <Navbar.Brand>Photo App</Navbar.Brand>
         <Nav className="mr-auto">
-          <NavLink to="/">
+          <NavLink to="/" className="nav-link">
             Home
           </NavLink>
         </Nav>
       </Navbar>
-      <h1>Photo App</h1>
       <Outlet />
     </>
   );
-}
+};
 
 export default App;
