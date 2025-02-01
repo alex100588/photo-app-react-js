@@ -1,33 +1,70 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import axios from 'axios';
 
 const Photos = () => {
-  return (
-    <Container>
-      <Row>
-        <Col xs={6} md={4}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src={`${process.env.PUBLIC_URL}/media/img.jpg`}
-            />
+  const [photos, setPhotos] = useState([]);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/photos");
+        
+        setPhotos(response.data);
+      } catch (error) {
+        console.error(error);
+        setHasError(true);
+      }
+    };
+
+    fetchData()
+  }, []);
+
+  const buildUI = () => {
+    if (hasError) {
+      return  <h2>No photos from database</h2>;
+    }
+
+    if (photos.length === 0) {
+      return <Spinner animation="grow" variant="primary" />
+    }
+    
+    return photos.map((photo) => (
+      <>
+        <Col xs={6} md={4} key={photo.id}> 
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/${photo.srcThumbnail}`} />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>{photo.title}</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {photo.shortDesc}
               </Card.Text>
               <Button variant="primary">
-                <NavLink to={`/photo/1`} className="nav-link">
+                <NavLink to={`/photo/${photo.id}`} className="nav-link">
                   See more
                 </NavLink>
               </Button>
             </Card.Body>
           </Card>
         </Col>
-      </Row>
-    </Container>
+        <br/>
+      </>
+    ));
+  }
+
+  return (
+    <>
+      <h1>Fotografii</h1>
+      <br/>
+      <Container>
+        <Row>
+          {buildUI()}
+        </Row>
+      </Container>
+    </>
   );
-};
+}
 
 export default Photos;
