@@ -7,12 +7,11 @@ import {
 
 import App from './components/App';
 import ErrorPage from './components/ErrorPage';
+import Photos from './components/Photos';
 import SinglePhoto from './components/SinglePhoto';
+
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import Photos from './components/Photos';
-
 
 const router = createBrowserRouter([
   {
@@ -21,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path:"/",
+        path: "/",
         element: <Photos />
       },
       {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 const Photos = () => {
   const [photos, setPhotos] = useState([]);
@@ -10,61 +10,59 @@ const Photos = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/photos");
-        
+        const response = await axios.get("http://localhost:3002/photos");
         setPhotos(response.data);
       } catch (error) {
         console.error(error);
         setHasError(true);
       }
     };
-
-    fetchData()
+    fetchData();
   }, []);
 
   const buildUI = () => {
     if (hasError) {
-      return  <h2>No photos from database</h2>;
+      return <h2>No image to show</h2>;
     }
 
     if (photos.length === 0) {
-      return <Spinner animation="grow" variant="primary" />
+      return <Spinner animation="grow" variant="primary" />;
     }
-    
-    return photos.map((photo) => (
+
+    return photos.map(({ id, srcThumbnail, title, shortDesc }) => (
       <>
-        <Col xs={6} md={4} key={photo.id}> 
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/${photo.srcThumbnail}`} />
+        <Col xs={12} md={6} lg={4} key={id}>
+          <Card className="mb-2">
+            <Card.Img
+              variant="top"
+              className="imageStyle"
+              src={`${process.env.PUBLIC_URL}/${srcThumbnail}`}
+            />
             <Card.Body>
-              <Card.Title>{photo.title}</Card.Title>
-              <Card.Text>
-                {photo.shortDesc}
-              </Card.Text>
+              <Card.Title>{title}</Card.Title>
+              <Card.Text>{shortDesc}</Card.Text>
               <Button variant="primary">
-                <NavLink to={`/photo/${photo.id}`} className="nav-link">
+                <NavLink to={`/photo/${id}`} className="nav-link">
                   See more
                 </NavLink>
               </Button>
             </Card.Body>
           </Card>
         </Col>
-        <br/>
+        <br />
       </>
     ));
-  }
+  };
 
   return (
     <>
-      <h1>Fotografii</h1>
-      <br/>
+      <h1 className="ps-5 mobile-padding">Photos</h1>
+      <br />
       <Container>
-        <Row>
-          {buildUI()}
-        </Row>
+        <Row>{buildUI()}</Row>
       </Container>
     </>
   );
-}
+};
 
 export default Photos;
