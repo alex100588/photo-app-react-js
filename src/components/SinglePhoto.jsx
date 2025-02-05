@@ -14,6 +14,8 @@ import { useParams } from "react-router-dom";
 
 const SinglePhoto = () => {
   const params = useParams();
+  // console.log(process.env);
+  
 
   const [photo, setPhoto] = useState(null);
   const [hasError, setHasError] = useState(false);
@@ -25,6 +27,8 @@ const SinglePhoto = () => {
         const response = await axios.get(
           `http://localhost:3002/photos/${params.photoId}`
         );
+        // console.log(response.data.comments);
+        
         setPhoto(response.data);
       } catch (error) {
         console.error(error);
@@ -76,7 +80,7 @@ const SinglePhoto = () => {
               src={`${process.env.PUBLIC_URL}/${photo.srcImage}`}
             />
             <Card.Body>
-              <Card.Title>{photo.tite}</Card.Title>
+              <Card.Title>{photo.title}</Card.Title>
               <Card.Text>S{photo.desc}</Card.Text>
             </Card.Body>
           </Card>

@@ -7,7 +7,7 @@ const App = () => {
       <Navbar bg="light" variant="light" className="ps-5">
         <Navbar.Brand>Photo App</Navbar.Brand>
         <Nav className="mr-auto">
-          <NavLink to="/" className="nav-link">
+          <NavLink to="/" className="nav-link active">
             Home
           </NavLink>
         </Nav>

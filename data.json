@@ -8,7 +8,8 @@
       "shortDesc": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
       "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "comments": [
-        "Planet Earth"
+        "Planet Earth",
+        "Second comment"
       ]
     },
     {
@@ -19,7 +20,8 @@
       "shortDesc": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
       "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "comments": [
-        "first"
+        "first",
+        "test"
       ]
     },
     {
@@ -38,7 +40,9 @@
       "title": "Our planet Earth",
       "shortDesc": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
       "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "comments": []
+      "comments": [
+        "test"
+      ]
     },
     {
       "id": 55,
@@ -56,7 +60,11 @@
       "title": "The Solar Sistem",
       "shortDesc": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
       "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "comments": []
+      "comments": [
+        "The solar sistem",
+        "Universe",
+        "Planets"
+      ]
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -11,6 +11,8 @@ const Photos = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3002/photos");
+        // console.log(process.env);
+        
         setPhotos(response.data);
       } catch (error) {
         console.error(error);
@@ -30,8 +32,9 @@ const Photos = () => {
     }
 
     return photos.map(({ id, srcThumbnail, title, shortDesc }) => (
-      <>
-        <Col xs={12} md={6} lg={4} key={id}>
+      
+      <Fragment key={id}>
+        <Col xs={12} md={6} lg={4} >
           <Card className="mb-2">
             <Card.Img
               variant="top"
@@ -50,7 +53,7 @@ const Photos = () => {
           </Card>
         </Col>
         <br />
-      </>
+      </Fragment>
     ));
   };
 
