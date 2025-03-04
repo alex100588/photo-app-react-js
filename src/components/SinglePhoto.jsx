@@ -27,7 +27,7 @@ const SinglePhoto = () => {
         const response = await axios.get(
           `http://localhost:3002/photos/${params.photoId}`
         );
-        // console.log(response.data.comments);
+        console.log(params);
         
         setPhoto(response.data);
       } catch (error) {
