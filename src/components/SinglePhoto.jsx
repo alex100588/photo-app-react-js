@@ -25,7 +25,7 @@ const SinglePhoto = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://server-json-vert.vercel.app/photos/${params.photoId}`
+          `https://server-photo-app.vercel.app/${params.photoId}`
         );
         console.log(params);
         
