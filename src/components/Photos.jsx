@@ -10,7 +10,7 @@ const Photos = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://server-photo-app.vercel.app/");
+        const response = await axios.get("https://server-photo-app.vercel.app/photos");
         // console.log(response);
         
         setPhotos(response.data);
